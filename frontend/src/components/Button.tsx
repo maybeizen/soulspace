@@ -28,7 +28,7 @@ const Button: FC<ButtonProps> = ({
   loading = false,
 }) => {
   const appearanceStyles = {
-    primary: "bg-indigo-500 text-white",
+    primary: "bg-gradient-to-r from-violet-500 to-indigo-500 text-white",
     secondary:
       "border-2 border-indigo-500 text-indigo-500 bg-transparent hover:bg-indigo-500 hover:text-white",
     text: "text-indigo-500 hover:underline bg-transparent",

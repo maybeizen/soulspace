@@ -1,9 +1,9 @@
+"use client";
+
 import Button from "../components/Button";
-import { useNavigate } from "react-router-dom";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  const navigate = useNavigate();
-
   return (
     <main className="relative flex items-center justify-center min-h-screen mx-auto overflow-hidden text-white">
       <div className="pointer-events-none fixed inset-0 opacity-50 -z-50">
@@ -29,7 +29,7 @@ export default function Home() {
           <Button
             appearance="primary"
             size="md"
-            onClick={() => navigate("/signup")}
+            onClick={() => redirect("/auth/signin")}
           >
             <span>Get Started</span>
           </Button>
