@@ -18,7 +18,7 @@ export default function Home() {
         <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-tight drop-shadow-md">
           Welcome to{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-indigo-500">
-            My Universe
+            Soulspace
           </span>
         </h1>
         <p className="text-lg sm:text-xl text-gray-300">

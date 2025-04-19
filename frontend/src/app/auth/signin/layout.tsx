@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign In | My Universe",
+  title: "Sign In | Soulspace",
   description: "Sign in to your account",
 };
 

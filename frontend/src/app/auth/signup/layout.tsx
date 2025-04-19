@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign Up | My Universe",
-  description: "Sign up for My Universe",
+  title: "Sign Up | Soulspace",
+  description: "Sign up for Soulspace",
 };
 
 export default function SignUpLayout({

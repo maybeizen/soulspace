@@ -16,7 +16,7 @@ export default function SignIn() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null); // clear any previous error
+    setError(null);
 
     try {
       const response = await axios.post(
@@ -27,14 +27,12 @@ export default function SignIn() {
           rememberMe,
         },
         {
-          withCredentials: true, // only if you're setting cookies like sessions
+          withCredentials: true,
         }
       );
 
-      // ✅ Handle success (e.g. redirect, show message, etc.)
       console.log("Signed in!", response.data);
     } catch (err: any) {
-      // ❌ Handle error (e.g. wrong credentials, server issue)
       console.error(err);
       setError(err.response?.data?.message || "Something went wrong.");
     }
@@ -49,7 +47,7 @@ export default function SignIn() {
         <h1 className="text-center text-3xl font-semibold text-white">
           Sign in to{" "}
           <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
-            Your Universe
+            Soulspace
           </span>
         </h1>
 
@@ -122,7 +120,7 @@ export default function SignIn() {
             href="/register"
             className="font-medium text-violet-400 hover:underline"
           >
-            Join My Universe
+            Join Soulspace
           </a>
         </div>
       </form>

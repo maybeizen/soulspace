@@ -1,3 +1,3 @@
-# My Universe Frontend
+# Soulspace Frontend
 
-Frontend for My Universe, build with React and Vite.
+Frontend for Soulspace, build with Next.js.
