@@ -1,9 +1,11 @@
 "use client";
 
+import "dotenv/config";
 import { useState } from "react";
 
 import Button from "../../../components/Button";
 import InputError from "../../../components/Input/InputError";
+import axios from "axios";
 
 export default function SignIn() {
   const [error, setError] = useState<string | null>(null);
@@ -12,9 +14,30 @@ export default function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Handle login API
+    setError(null); // clear any previous error
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}`,
+        {
+          username,
+          password,
+          rememberMe,
+        },
+        {
+          withCredentials: true, // only if you're setting cookies like sessions
+        }
+      );
+
+      // ✅ Handle success (e.g. redirect, show message, etc.)
+      console.log("Signed in!", response.data);
+    } catch (err: any) {
+      // ❌ Handle error (e.g. wrong credentials, server issue)
+      console.error(err);
+      setError(err.response?.data?.message || "Something went wrong.");
+    }
   };
 
   return (

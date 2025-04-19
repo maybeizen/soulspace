@@ -1,8 +1,8 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 
 const userSchema = new Schema(
   {
-    userId: { type: String, required: true, unique: true },
+    userId: { type: String, required: true, unique: true }, // internal UUID
     name: { type: String },
     email: { type: String, required: true, unique: true, trim: true },
     password: { type: String, required: true },
@@ -12,6 +12,7 @@ const userSchema = new Schema(
       public: { type: Boolean, default: false },
     },
 
+    // 🧑 Embedded Profile
     profile: {
       name: {
         first: { type: String, default: "", trim: true },
@@ -24,52 +25,19 @@ const userSchema = new Schema(
       location: { type: String, default: "", trim: true },
     },
 
-    journals: [
-      {
-        title: { type: String, default: "", trim: true },
-        content: { type: String, default: "" },
-        tags: { type: [String], default: [] },
-        date: { type: Date, default: Date.now },
-        public: { type: Boolean, default: false },
-      },
-    ],
+    // 🔗 References to external models
+    journals: [{ type: Types.ObjectId, ref: "Journal" }],
+    moods: [{ type: Types.ObjectId, ref: "Mood" }],
+    memories: [{ type: Types.ObjectId, ref: "Memory" }],
+    friends: [{ type: Types.ObjectId, ref: "Friend" }],
 
-    moods: [
-      {
-        mood: { type: String, default: "", trim: true },
-        note: { type: String, default: "", trim: true },
-        date: { type: Date, default: Date.now },
-      },
-    ],
-
-    memories: [
-      {
-        quote: { type: String, default: "", trim: true },
-        author: { type: String, default: "", trim: true },
-        date: { type: Date, default: Date.now },
-      },
-    ],
-
-    friends: [
-      {
-        userId: { type: String, required: true },
-        status: {
-          type: String,
-          enum: ["pending", "accepted", "blocked"],
-          default: "pending",
-        },
-        date: { type: Date, default: Date.now },
-      },
-    ],
-
+    // ⚙️ Optional inline settings
     settings: {
       theme: { type: String, default: "light" },
       notifications: { type: Boolean, default: true },
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 export default model("User", userSchema);

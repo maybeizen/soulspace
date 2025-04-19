@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/index.ts"], // Entry point of your backend server
+  entry: ["src/server.ts"], // Entry point of your backend server
   outDir: "dist", // Output directory
   format: ["cjs", "esm"], // Output formats
   splitting: true, // Disable code splitting for backend
