@@ -15,7 +15,7 @@ export interface TokenPayload {
 
 export function signToken(
   payload: TokenPayload,
-  expiresIn = JWT_EXPIRES_IN
+  expiresIn: string = JWT_EXPIRES_IN
 ): string {
   // @ts-expect-error
   return jwt.sign(payload, JWT_SECRET, { expiresIn });
